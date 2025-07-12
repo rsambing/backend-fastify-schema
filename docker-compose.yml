@@ -1,0 +1,30 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3333:3333"
+    env_file:
+      - .env
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+      - /app/node_modules  # Evita conflito entre host e container
+    command: npm run dev
+    environment:
+      - NODE_ENV=development
+
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: fila1
+      POSTGRES_PASSWORD: fila1
+      POSTGRES_DB: fila1_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

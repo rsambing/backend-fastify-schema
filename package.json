@@ -1,0 +1,31 @@
+{
+   "type": "module",
+   "scripts": {
+      "dev": "nodemon --watch src --exec tsx watch src/index.ts",
+      "start": "node --loader ts-node/esm src/index.ts",
+      "build": "tsc"
+   },
+   "dependencies": {
+      "@fastify/swagger": "^9.5.1",
+      "@fastify/swagger-ui": "^5.2.3",
+      "@prisma/client": "^5.22.0",
+      "dotenv": "^16.5.0",
+      "fastify": "^5.4.0",
+      "jsonwebtoken": "^9.0.2",
+      "prisma": "^5.22.0",
+      "zod": "^3.25.67",
+      "zod-to-json-schema": "^3.24.5"
+   },
+   "devDependencies": {
+      "@types/jsonwebtoken": "^9.0.10",
+      "@types/node": "^20.19.1",
+      "nodemon": "^3.1.10",
+      "ts-node": "^10.9.2",
+      "tsx": "^4.20.3",
+      "typescript": "^5.8.3"
+   },
+   "keywords": [],
+   "author": "",
+   "license": "ISC",
+   "description": ""
+}
