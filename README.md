@@ -58,5 +58,3 @@ docker compose up --build
 You'll use this a lot — especially when dependencies change or you want to make sure everything is fully updated.
 
 ---
-
-Se quiser, posso montar isso já em um `README.md` com formatação pronta ou até gerar um PDF. Deseja?
