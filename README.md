@@ -2,59 +2,61 @@
 This is a setup I prepared for backend development inside a container, using Node.js (with TypeScript), Fastify, Prisma as the ORM, Zod for validation, and Swagger for API documentation.
 
 
-**Comandos essenciais** — separados por categorias:
+**Essentials Commands** — separeted by categories:
 
 ---
 
-## 🐳 **Comandos Docker e Docker Compose**
+## 🐳 **Docker and Docker Compose Commands**
 
-| Comando                                            | O que faz                                                               |
-| -------------------------------------------------- | ----------------------------------------------------------------------- |
-| `docker compose up --build`                        | Sobe os containers com rebuild (ideal quando muda algo no `Dockerfile`) |
-| `docker compose up`                                | Sobe os containers (sem rebuild)                                        |
-| `docker compose down`                              | Derruba e remove os containers                                          |
-| `docker compose restart`                           | Reinicia todos os containers                                            |
-| `docker compose logs -f`                           | Mostra logs em tempo real                                               |
-| `docker compose exec app sh`                       | Acessa o terminal dentro do container `app`                             |
-| `docker compose exec app npm install`              | Instala dependência dentro do container                                 |
-| `docker compose exec app npx prisma migrate dev`   | Executa uma migration Prisma no container                               |
-| `docker compose exec db psql -U fila1 -d fila1_db` | Acessa o banco PostgreSQL direto no terminal                            |
-
----
-
-## 📦 **Comandos do Node/TypeScript/Prisma**
-
-| Comando                              | Descrição                                       |
-| ------------------------------------ | ----------------------------------------------- |
-| `npm install pacote`                 | Instala pacote normalmente                      |
-| `npm install --save-dev pacote`      | Instala como dependência de desenvolvimento     |
-| `npm run dev`                        | Inicia o projeto em modo desenvolvimento        |
-| `npm run build`                      | Compila o TypeScript para JavaScript            |
-| `npx prisma generate`                | Gera o client Prisma                            |
-| `npx prisma migrate dev --name nome` | Cria uma migration e aplica                     |
-| `npx prisma studio`                  | Abre interface visual para ver o banco de dados |
-| `npx prisma format`                  | Formata o arquivo `schema.prisma`               |
+| Command                                            | Description                                                                           |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `docker compose up --build`                        | Starts the containers with rebuild (ideal when something changes in the `Dockerfile`) |
+| `docker compose up`                                | Starts the containers (without rebuild)                                               |
+| `docker compose down`                              | Stops and removes the containers                                                      |
+| `docker compose restart`                           | Restarts all containers                                                               |
+| `docker compose logs -f`                           | Shows real-time logs                                                                  |
+| `docker compose exec app sh`                       | Opens a terminal inside the `app` container                                           |
+| `docker compose exec app npm install`              | Installs dependencies inside the container                                            |
+| `docker compose exec app npx prisma migrate dev`   | Runs a Prisma migration inside the container                                          |
+| `docker compose exec db psql -U test -d test_db` | Accesses the PostgreSQL database via terminal                                         |
 
 ---
 
-## 🛑 **Quando derrubar o container?**
+## 📦 **Node/TypeScript/Prisma Commands**
 
-| Mudança                         | Precisa `down` e `up --build`?       |
-| ------------------------------- | ------------------------------------ |
-| Código `.ts`                    | ❌ Não (hot reload com `ts-node-dev`) |
-| `package.json` / `node_modules` | ✅ Sim                                |
-| Dockerfile                      | ✅ Sim                                |
-| docker-compose.yml              | ✅ Sim                                |
-| `.env` (variáveis novas)        | ⚠️ Sim (ou `docker compose restart`) |
+| Command                              | Description                                      |
+| ------------------------------------ | ------------------------------------------------ |
+| `npm install package`                | Installs a package normally                      |
+| `npm install --save-dev package`     | Installs as a development dependency             |
+| `npm run dev`                        | Starts the project in development mode           |
+| `npm run build`                      | Compiles TypeScript to JavaScript                |
+| `npx prisma generate`                | Generates the Prisma client                      |
+| `npx prisma migrate dev --name name` | Creates and applies a migration                  |
+| `npx prisma studio`                  | Opens a visual interface to explore the database |
+| `npx prisma format`                  | Formats the `schema.prisma` file                 |
 
 ---
 
-## 🔥 Dica final: Comando mais usado
+## 🛑 **When Should You Take Down the Container?**
+
+| Change                             | Requires `down` and `up --build`?        |
+| ---------------------------------- | ---------------------------------------- |
+| `.ts` code                         | ❌ No (hot reload with `ts-node-dev`)     |
+| `package.json` / `node_modules`    | ✅ Yes                                    |
+| `Dockerfile`                       | ✅ Yes                                    |
+| `docker-compose.yml`               | ✅ Yes                                    |
+| `.env` (new environment variables) | ⚠️ Yes (or use `docker compose restart`) |
+
+---
+
+## 🔥 Final Tip: Most Used Command
 
 ```bash
 docker compose up --build
 ```
 
-Você vai usar isso muito — quando muda dependência ou quer garantir que está tudo atualizado.
+You'll use this a lot — especially when dependencies change or you want to make sure everything is fully updated.
 
 ---
+
+Se quiser, posso montar isso já em um `README.md` com formatação pronta ou até gerar um PDF. Deseja?
